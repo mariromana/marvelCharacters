@@ -1,76 +1,40 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Skeleton from '../skeleton/Skeleton';
 
 import './charInfo.scss';
 
 
-class CharInfo extends Component {
-    state = {
-        char: null,
-        loading: false,
-        error: false
-    }
-    marvelService = new MarvelService(); 
+const CharInfo = (props) => {
+    const [char, setChar] = useState(null);
+ 
+    const {loading, error, getCharacter, clearError} = useMarvelService(); 
+    
+    useEffect(() => {
+        updateChar()
+    }, [props.charId])
 
-    componentDidMount() {
-        this.updateChar();
-    }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.charId !== prevProps.charId) {
-            this.updateChar();
-        }
-
-    }
-
+    const updateChar = () => {
   
 
-    onCharLoaded = (char) => {
-        this.setState({
-            char, 
-            loading: false})
-
-    }
-
-    onError = () => {
-        this.setState({
-            loading: false,
-            error: true
-        })
-
-    }
-
-
-    onCharLoading = () => {
-        this.setState({
-            loading: true
-        })
-    } 
-
-    updateChar = () => {
-        const {charId} = this.props;
+        const {charId} = props;
         if (!charId) {
             return;
         }
-        this.onCharLoading();
-        this.marvelService
-            .getCharacter(charId)
-            .then(this.onCharLoaded)
-            .catch(this.onError)
+        clearError();
+        getCharacter(charId)
+                .then(onCharLoaded)
 
-    
-
-        
     }
 
-    render () {
-        const {char, loading, error} = this.state;
-
+    const onCharLoaded= (char) => {
+       setChar(char);
+    }
 
         const skeleton = char || loading || error ?  null : <Skeleton/>;
 
@@ -86,7 +50,7 @@ class CharInfo extends Component {
                {content}
             </div>
         )
-    }
+
 }
 
 const View = ({char}) => {

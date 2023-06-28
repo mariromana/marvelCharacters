@@ -1,31 +1,45 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
 import './randomChar.scss';
 // import thor from '../../resources/img/thor.jpeg';
 import mjolnir from '../../resources/img/mjolnir.png';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 
 
-class RandomChar extends Component {
-    state = {
-        char: {},
-        loading: true,
-        error: false
-        // name: null,
-        // description: null,
-        // thumbnail: null,
-        // homepage: null,
-        // wiki: null
-    }
-    marvelService = new MarvelService(); 
+const RandomChar = () => {
 
-    componentDidMount () {
-        this.updateChar();
-        // this.timerId = setInterval(this.updateChar, 3000);
+    // const [loading, setLoading] = useState(true);
+    // const [error, setError] = useState(false);
+    const [char, setChar] = useState({});
+    // state = {
+    //     char: {},
+    //     loading: true,
+    //     error: false
+    //     // name: null,
+    //     // description: null,
+    //     // thumbnail: null,
+    //     // homepage: null,
+    //     // wiki: null
+    // }
+    const {loading, error, getCharacter, clearError} = useMarvelService();
+    // const marvelService = new MarvelService(); 
+
+    useEffect(() => {
+        updateChar();
+        const timerId = setInterval(updateChar, 60000);
+
+        return () => {
+            clearInterval(timerId)
+        
+        }
+    }, [])
+    // componentDidMount () {
+    //     this.updateChar();
+    //     // this.timerId = setInterval(this.updateChar, 3000);
     
-    }
+    // }
 
     // componentWillUnmount () {
     //     clearInterval(this.timerId);
@@ -34,46 +48,22 @@ class RandomChar extends Component {
 
     
 
-    onCharLoaded = (char) => {
-        this.setState({
-            char, 
-            loading: false})
-
-    }
-
-    onError = () => {
-        this.setState({
-            loading: false,
-            error: true
-        })
-
+    const onCharLoaded = (char) => {
+        setChar(char);
     }
 
 
-    onCharLoading = () => {
-        this.setState({
-            loading: true
-        })
-    } 
 
-    updateChar = () => {
+    const updateChar = () => {
+        clearError();
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-        this.onCharLoading();
-        this.marvelService
-            // .getAllCharacters()
-            // .then(res => console.log(res))
-            .getCharacter(id)
-            .then(this.onCharLoaded)
-            .catch(this.onError)
+        getCharacter(id)
+            .then(onCharLoaded)
             
         
     }
 
    
-
-    
-    render () {
-        const {char, loading, error} = this.state;
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
         const content = !(loading || error) ? <View char={char}/> : null;
@@ -91,7 +81,7 @@ class RandomChar extends Component {
                     <p className="randomchar__title">
                         Or choose another one
                     </p>
-                    <button className="button button__main" onClick={this.updateChar}>
+                    <button className="button button__main" onClick={updateChar}>
 
                         <div className="inner">try it</div>
                     </button>
@@ -99,7 +89,7 @@ class RandomChar extends Component {
                 </div>
             </div>
         )
-    }
+  
 }
 
 const View = ({char}) => {
