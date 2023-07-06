@@ -1,7 +1,7 @@
 import {useHttp} from '../hooks/http.hook';
 const  useMarvelService = () => { 
 
-	const {loading, request, error, clearError} = useHttp();
+	const {request, clearError, process, setProcess} = useHttp();
 
 
 
@@ -88,8 +88,15 @@ const  useMarvelService = () => {
 		}
 	}
 
-	return {loading, error, getAllCharacters, getCharacter, clearError, getAllComics,
-		getComic, getCharacterByName}
+	return {
+			process, 
+			getAllCharacters,
+			getCharacter,
+			clearError, 
+			getAllComics,
+			getComic, 
+			getCharacterByName,
+		setProcess}
 }
 
 export default useMarvelService;
