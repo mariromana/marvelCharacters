@@ -37,3 +37,26 @@
         }
     }
 }
+
+@media (max-width: 991px) {
+    .single-comic {
+        grid-template-columns: 280px 300px auto;
+        &__img {
+            width: 280px;
+            height: 440px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .single-comic {
+        grid-template-columns: 250px 260px auto;
+        &__img {
+            width: 260px;
+            height: 420px;
+        }
+        &__descr {
+            margin-top: 18px;
+        }
+    }
+}

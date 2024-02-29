@@ -17,6 +17,7 @@ const MainPage = () => {
         setChar(id)
     }
 
+    console.log('mp')
     return (
         <>
         <Helmet>
@@ -25,7 +26,7 @@ const MainPage = () => {
             content="Marvel information portal"
             />
             <title>Marvel information portal</title>
-        </Helmet>
+         </Helmet>
 
           <ErrorBoundary>
                 <RandomChar/>

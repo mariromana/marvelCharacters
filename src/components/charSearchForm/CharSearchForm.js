@@ -12,7 +12,7 @@ import './CharSearchForm.scss';
 
 const CharSearchForm = () => {
     const [char, setChar] = useState(null);
-    const {loading, error, getCharacterByName, clearError, process, setProcess} = useMarvelService();
+    const {error, getCharacterByName, clearError, process, setProcess} = useMarvelService();
 
     const onCharLoaded = (char) => {
         setChar(char);
