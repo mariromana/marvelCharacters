@@ -145,9 +145,6 @@
         &__decoration {
             z-index: -1;
         }
-        &__img {
-            margin: 0 auto;
-        }
         &__name {
             text-align: center;
             margin-top: 10px;
@@ -155,6 +152,11 @@
         &__descr {
             text-align: center;
             margin-bottom: 10px;
+        }
+        &__img {
+            margin: 0 auto;
+            width: 220px;
+            height: 220px;
         }
     }
 }

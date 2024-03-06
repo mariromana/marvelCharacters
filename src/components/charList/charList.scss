@@ -114,20 +114,26 @@
 @media (max-width: 575px) {
     .char {
         &__content {
-            grid-template-columns: 200px 300px;
-            column-gap: 50px;
+            grid-template-columns: repeat(2, 150px);
+            column-gap: 15px;
+            justify-content: space-around;
         }
         &__grid {
-            grid-template-columns: repeat(1, 200px);
+            grid-template-columns: 1fr;
             column-gap: 18px;
             row-gap: 30px;
         }
         &__item {
-            width: 180px;
-            height: 280px;
+            width: 150px;
+            height: 250px;
             img {
-                width: 180px;
+                width: 150px;
+                height: 180px;
             }
+        }
+        &__name {
+            font-size: 20px;
+            line-height: 15px;
         }
     }
 }

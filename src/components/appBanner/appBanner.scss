@@ -27,8 +27,13 @@
 }
 
 @media (max-width: 575px) {
+    .app {
+        &__banner {
+            padding: 0 5px 0 5px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
     .app__banner-text {
-        font-size: 18px;
-        line-height: 20px;
+        display: none;
     }
 }

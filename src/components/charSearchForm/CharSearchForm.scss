@@ -83,3 +83,20 @@
         }
     }
 }
+
+@media (max-width: 575px) {
+    .char {
+        &__search {
+            &-wrapper {
+                flex-direction: column;
+                input {
+                    width: 130px;
+                }
+                button {
+                    margin-top: 15px;
+                    width: 100px;
+                }
+            }
+        }
+    }
+}

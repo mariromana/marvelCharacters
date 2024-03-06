@@ -99,3 +99,22 @@
         }
     }
 }
+
+@media (max-width: 575px) {
+    .char {
+        &__basics {
+            display: flex;
+            flex-direction: column;
+
+            img {
+                display: none;
+            }
+        }
+        &__info {
+            &-name {
+                margin-top: 18px;
+                text-align: left;
+            }
+        }
+    }
+}

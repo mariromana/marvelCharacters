@@ -65,29 +65,24 @@
 }
 @media (max-width: 575px) {
     .single-comic {
-        // grid-template-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr auto;
-        column-gap: 35px;
+        display: flex;
+        flex-direction: column;
         &__char-img {
             width: 240px;
-            height: 350px;
+            height: 300px;
+            margin: 0 auto;
         }
         &__descr {
             margin-top: 18px;
         }
         &__back {
-            justify-self: start;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: 24px;
-            grid-column: 2 / 4;
-            &:hover {
-                color: $main-color;
-            }
+            margin-top: 18px;
         }
         &__name {
             font-size: 20px;
             line-height: 20px;
+            text-align: center;
+            margin-top: 20px;
         }
         &__descr {
             font-size: 18px;

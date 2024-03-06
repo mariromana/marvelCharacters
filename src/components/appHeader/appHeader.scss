@@ -34,5 +34,10 @@
         &__header {
             flex-direction: column;
         }
+        &__menu {
+            ul {
+                justify-content: center;
+            }
+        }
     }
 }
