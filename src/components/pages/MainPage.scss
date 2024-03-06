@@ -1,0 +1,10 @@
+@media (max-width: 767px) {
+    .fixed {
+        position: sticky;
+        top: 0;
+        cursor: pointer;
+    }
+    .fixed:focus {
+        overflow-y: auto;
+    }
+}

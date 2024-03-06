@@ -1,53 +1,47 @@
-import { useState } from "react";
-import {Helmet} from 'react-helmet'
-import RandomChar from "../randomChar/RandomChar";
-import CharInfo from "../charInfo/CharInfo";
-import CharList from "../charList/CharList";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import RandomChar from '../randomChar/RandomChar';
+import CharInfo from '../charInfo/CharInfo';
+import CharList from '../charList/CharList';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import decoration from '../../resources/img/vision.png';
-import CharSearchForm from "../charSearchForm/CharSearchForm";
-
+import CharSearchForm from '../charSearchForm/CharSearchForm';
+import './MainPage.scss';
 
 const MainPage = () => {
-
     const [selectedChar, setChar] = useState(null);
 
-
     const onCharSelected = (id) => {
-        setChar(id)
-    }
+        setChar(id);
+    };
 
-    console.log('mp')
     return (
         <>
-        <Helmet>
-            <meta
-            name="description"
-            content="Marvel information portal"
-            />
-            <title>Marvel information portal</title>
-         </Helmet>
+            <Helmet>
+                <meta name="description" content="Marvel information portal" />
+                <title>Marvel information portal</title>
+            </Helmet>
 
-          <ErrorBoundary>
-                <RandomChar/>
-           </ErrorBoundary>
-                 <div className="char__content">
-                     <ErrorBoundary>
-                    		<CharList onCharSelected={onCharSelected}/>
-                     </ErrorBoundary>
-                        <div>
-                        <ErrorBoundary>
-                      		<CharInfo charId={selectedChar}/>
-                       </ErrorBoundary>
-                       <ErrorBoundary>
-                            <CharSearchForm/>
-                       </ErrorBoundary>
-                        </div>
-                    </div>
-             <img className="bg-decoration" src={decoration} alt="vision"/>  
+            <ErrorBoundary>
+                <RandomChar />
+            </ErrorBoundary>
+            <div className="char__content">
+                <ErrorBoundary>
+                    <CharList onCharSelected={onCharSelected} />
+                </ErrorBoundary>
+                <div className="fixed">
+                    <ErrorBoundary>
+                        <CharInfo charId={selectedChar} />
+                    </ErrorBoundary>
 
+                    <ErrorBoundary>
+                        <CharSearchForm />
+                    </ErrorBoundary>
+                </div>
+            </div>
+            <img className="bg-decoration" src={decoration} alt="vision" />
         </>
-    )
-}
+    );
+};
 
 export default MainPage;
