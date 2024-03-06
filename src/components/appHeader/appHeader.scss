@@ -29,3 +29,10 @@
         }
     }
 }
+@media (max-width: 575px) {
+    .app {
+        &__header {
+            flex-direction: column;
+        }
+    }
+}

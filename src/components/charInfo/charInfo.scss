@@ -61,5 +61,41 @@
         line-height: 24px;
         text-align: center;
     }
+}
 
+@media (max-width: 1200px) {
+    .char {
+        &__info {
+            &-name {
+                margin-top: 18px;
+            }
+        }
+        &__basics {
+            grid-template-columns: 1fr;
+        }
+        &__btns {
+            margin-top: 20px;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .char {
+        &__info {
+            &-name {
+                margin-top: 18px;
+                text-align: center;
+            }
+        }
+        &__basics {
+            img {
+                margin: 0 auto;
+            }
+        }
+        &__descr {
+            text-align: center;
+        }
+        &__btns {
+            margin-left: 10px;
+        }
+    }
 }
