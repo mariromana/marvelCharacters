@@ -81,10 +81,11 @@
 
 @media (max-width: 991px) {
     .randomchar {
-        grid-template-columns: 500px 240px;
+        grid-template-columns: 2fr 1fr;
+        // grid-template-columns: 500px 240px;
         &__title {
-            font-size: 20px;
-            line-height: 25px;
+            font-size: 18px;
+            line-height: 27px;
             &:nth-child(2) {
                 margin-top: 33px;
             }
@@ -121,6 +122,10 @@
         }
         &__decoration {
             display: block;
+        }
+        &__btns {
+            display: block;
+            margin: 0 auto;
         }
     }
 }

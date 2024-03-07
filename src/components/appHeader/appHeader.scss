@@ -29,6 +29,15 @@
         }
     }
 }
+
+@media (max-width: 767px) {
+    .app {
+        &__title {
+            text-align: center;
+        }
+    }
+}
+
 @media (max-width: 575px) {
     .app {
         &__header {

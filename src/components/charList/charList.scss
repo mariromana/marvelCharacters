@@ -70,11 +70,11 @@
     .char {
         &__content {
             // grid-template-columns: 600px 280px;
-            grid-template-columns: repeat(4, 1fr);
-            column-gap: 18px;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 81px;
         }
         &__grid {
-            grid-template-columns: repeat(2, 200px);
+            grid-template-columns: repeat(2, 1fr);
             justify-content: center;
             column-gap: 25px;
             row-gap: 30px;
