@@ -93,7 +93,7 @@
     .char {
         &__content {
             grid-template-columns: 200px 300px;
-            justify-content: center;
+            justify-content: space-between;
             column-gap: 30px;
         }
         &__grid {
